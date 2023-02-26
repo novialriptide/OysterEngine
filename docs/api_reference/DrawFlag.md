@@ -1,0 +1,12 @@
+# DrawFlag Constants
+```c
+DrawFlag.TOPLEFT
+DrawFlag.TOPRIGHT
+DrawFlag.TOPMIDDLE
+DrawFlag.MIDDLELEFT
+DrawFlag.MIDDLERIGHT
+DrawFlag.CENTER
+DrawFlag.BOTTOMLEFT
+DrawFlag.BOTTOMRIGHT
+DrawFlag.BOTTOMMIDDLE
+```

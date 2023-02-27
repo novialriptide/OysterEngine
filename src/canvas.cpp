@@ -6,7 +6,7 @@ Engage::Canvas::Canvas(int width, int height)
     this->width_ = width;
     this->height_ = height;
     this->texture_ = SDL_CreateTexture(
-        Engage::window_instance->GetRenderer(), SDL_PIXELFORMAT_RGBA8888,
+        Window::GetInstance()->GetRenderer(), SDL_PIXELFORMAT_RGBA8888,
         SDL_TEXTUREACCESS_STATIC, width, height
     );
 }

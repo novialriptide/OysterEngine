@@ -1,6 +1,8 @@
 #include <SDL2/SDL.h>
 #include "engage.hpp"
 
+Engage::Window *window_instance;
+
 Engage::Window::Window(int width, int height, const char *title)
 {
     this->width_ = width;
@@ -11,7 +13,13 @@ Engage::Window::Window(int width, int height, const char *title)
                                SDL_WINDOW_SHOWN);
     this->renderer_ = SDL_CreateRenderer(window_, -1,
                                    SDL_RENDERER_ACCELERATED);
-    Engage::window_instance = this;
+    this->instance_ = this;
+}
+
+Engage::Window *
+Engage::Window::GetInstance()
+{
+    return window_instance;
 }
 
 SDL_Window *
@@ -37,5 +45,5 @@ Engage::Window::Update()
 {
     SDL_Texture *texture = this->GetCanvas()->GetSDLTexture();
     SDL_RenderCopy(this->GetRenderer(), texture, NULL, NULL);
-    SDL_RenderPresent(Engage::window_instance->GetRenderer());
+    SDL_RenderPresent(window_instance->GetRenderer());
 }

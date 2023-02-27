@@ -26,8 +26,10 @@ namespace Engage
 
     class Window
     {
+
     public:
         Window(int width, int height, const char *title);
+        static Window *GetInstance();
         SDL_Window *GetWindow();
         SDL_Renderer *GetRenderer();
         Canvas *GetCanvas();
@@ -38,7 +40,6 @@ namespace Engage
         SDL_Renderer *renderer_;
         int width_, height_;
         Engage::Canvas *canvas_;
+        Window *instance_;
     };
-
-    Window *window_instance = NULL;
 }

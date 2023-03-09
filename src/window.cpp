@@ -1,10 +1,10 @@
 #include <SDL2/SDL.h>
 #include "engage.hpp"
 
-Engage::Window *window_instance;
-
 Engage::Window::Window(int width, int height, const char *title)
 {
+    SDL_Init(SDL_INIT_VIDEO);
+
     this->width_ = width;
     this->height_ = height;
     this->window_ = SDL_CreateWindow(title,
@@ -13,13 +13,15 @@ Engage::Window::Window(int width, int height, const char *title)
                                SDL_WINDOW_SHOWN);
     this->renderer_ = SDL_CreateRenderer(window_, -1,
                                    SDL_RENDERER_ACCELERATED);
-    this->instance_ = this;
+    Engage::Canvas canvas = Engage::Canvas(width, height);
+    this->canvas_ = &canvas;
+    Engage::window_instance = this;
 }
 
-Engage::Window *
+Engage::Window &
 Engage::Window::GetInstance()
 {
-    return window_instance;
+    return *Engage::window_instance;
 }
 
 SDL_Window *

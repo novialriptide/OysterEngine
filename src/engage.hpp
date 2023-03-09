@@ -13,23 +13,25 @@ namespace Engage
     class Canvas
     {
     public:
+        Canvas();
         Canvas(int width, int height);
 
+        SDL_Surface *GetSDLSurface();
         SDL_Texture *GetSDLTexture();
 
         void DrawPixel(int x, int y, Color color);
 
     private:
         int width_, height_;
+        SDL_Surface *surface_;
         SDL_Texture *texture_;
     };
 
     class Window
     {
-
     public:
         Window(int width, int height, const char *title);
-        static Window *GetInstance();
+        static Window &GetInstance();
         SDL_Window *GetWindow();
         SDL_Renderer *GetRenderer();
         Canvas *GetCanvas();
@@ -42,4 +44,6 @@ namespace Engage
         Engage::Canvas *canvas_;
         Window *instance_;
     };
+    
+    static Window *window_instance;
 }
